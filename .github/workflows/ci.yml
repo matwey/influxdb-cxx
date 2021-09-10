@@ -34,7 +34,7 @@ jobs:
       - name: Install
         run: cmake --build build --target install
       - name: Check installed library
-        run: script/ci_testdeploy.sh -DINFLUXCXX_AS_SUBDIR=OFF
+        run: script/ci_testdeploy.sh -DINFLUXCXX_AS_SUBDIR=OFF -DCMAKE_EXE_LINKER_FLAGS='-Wl,--as-needed -Wl,--no-undefined -Wl,-z,now'
 
 
   build_conan:

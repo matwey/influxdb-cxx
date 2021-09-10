@@ -14,6 +14,7 @@ cd /tmp/influx-test-${PID}/
 mkdir build && cd build
 cmake "$@" ..
 cmake --build . -j
+./influxcxx-writer
 
 #cleanup
 rm -r ${BASEPATH}
