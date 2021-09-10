@@ -31,9 +31,6 @@ add_library(InfluxDB
     InfluxDB.cxx
     Point.cxx
     InfluxDBFactory.cxx
-    $<TARGET_OBJECTS:InfluxDB-Internal>
-    $<TARGET_OBJECTS:InfluxDB-Http>
-    $<TARGET_OBJECTS:InfluxDB-BoostSupport>
     )
 add_library(InfluxData::InfluxDB ALIAS InfluxDB)
 
@@ -54,6 +51,9 @@ target_link_libraries(InfluxDB
   PRIVATE
     CURL::libcurl
     Threads::Threads
+    InfluxDB-Internal
+    InfluxDB-Http
+    InfluxDB-BoostSupport
 )
 
 # Use C++17
