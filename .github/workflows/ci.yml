@@ -27,7 +27,7 @@ jobs:
         run: apt-get install -y libboost-system1.71-dev
       - name: Build
         run: |
-          script/ci_build.sh -DINFLUXCXX_WITH_BOOST=${{ matrix.boost }}
+          script/ci_build.sh -DINFLUXCXX_WITH_BOOST=${{ matrix.boost }} -DCMAKE_SHARED_LINKER_FLAGS='-Wl,--no-undefined'
           cmake --build build --target unittest
       - name: Check deployment as cmake subdirectory
         run: script/ci_testdeploy.sh -DINFLUXCXX_AS_SUBDIR=ON -DINFLUXCXX_WITH_BOOST=${{ matrix.boost }}
